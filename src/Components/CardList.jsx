@@ -2,14 +2,14 @@
 import React, { useContext } from 'react';
 import { ContextGlobal } from './utils/global.context.jsx';
 import Card from './Card';
+import '../styles/CardList.css'; // Asegúrate de importar el archivo CSS
+
 
 const CardList = () => {
   const { state } = useContext(ContextGlobal);
-  console.log(state); // Verifica si los datos están disponibles
-  console.log("aber");
 
   return (
-    <div className="card-list">
+    <div className="card-list-container"> {/* Aplicamos la clase card-list */}
       {state.data.map(user => (
         <Card
           key={user.id}

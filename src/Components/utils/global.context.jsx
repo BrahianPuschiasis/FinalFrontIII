@@ -1,14 +1,27 @@
 // eslint-disable-next-line no-unused-vars
-import React, { createContext, useMemo, useState, useEffect } from "react";
+import React, { createContext, useMemo, useReducer, useEffect } from "react";
 
 export const ContextGlobal = createContext({});
 
+const initialState = {
+  theme: "light",
+  data: []
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "FETCH_SUCCESS":
+      return { ...state, data: action.payload };
+    case "TOGGLE_THEME":
+      return { ...state, theme: state.theme === "light" ? "dark" : "light" };
+    default:
+      return state;
+  }
+};
+
 // eslint-disable-next-line react/prop-types
 export const ContextProvider = ({ children }) => {
-  const [state, setState] = useState({
-    theme: "light",
-    data: []
-  });
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const fetchData = async () => {
     try {
@@ -16,12 +29,7 @@ export const ContextProvider = ({ children }) => {
         "https://jsonplaceholder.typicode.com/users"
       );
       const data = await response.json();
-     console.log(data); 
-
-      setState((prevState) => ({
-        ...prevState,
-        data,
-      }));
+      dispatch({ type: "FETCH_SUCCESS", payload: data });
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -32,10 +40,7 @@ export const ContextProvider = ({ children }) => {
   }, []);
 
   const toggleTheme = () => {
-    setState((prevState) => ({
-      ...prevState,
-      theme: prevState.theme === "light" ? "dark" : "light",
-    }));
+    dispatch({ type: "TOGGLE_THEME" });
   };
 
   const value = useMemo(() => ({ state, toggleTheme }), [state]);
