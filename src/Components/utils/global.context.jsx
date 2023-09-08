@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-case-declarations */
 // eslint-disable-next-line no-unused-vars
 import React, { createContext, useMemo, useReducer, useEffect } from "react";
 
 export const ContextGlobal = createContext({});
 
 const initialState = {
-  theme: "light",
+  theme: localStorage.getItem('theme') || "light",
   data: []
 };
 
@@ -13,13 +15,14 @@ const reducer = (state, action) => {
     case "FETCH_SUCCESS":
       return { ...state, data: action.payload };
     case "TOGGLE_THEME":
-      return { ...state, theme: state.theme === "light" ? "dark" : "light" };
+      const newTheme = state.theme === "light" ? "dark" : "light";
+      localStorage.setItem('theme', newTheme);
+      return { ...state, theme: newTheme };
     default:
       return state;
   }
 };
 
-// eslint-disable-next-line react/prop-types
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -39,11 +42,7 @@ export const ContextProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  const toggleTheme = () => {
-    dispatch({ type: "TOGGLE_THEME" });
-  };
-
-  const value = useMemo(() => ({ state, toggleTheme }), [state]);
+  const value = useMemo(() => ({ state, dispatch }), [state]);
 
   return (
     <ContextGlobal.Provider value={value}>
