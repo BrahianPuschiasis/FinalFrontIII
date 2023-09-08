@@ -1,21 +1,50 @@
-/* eslint-disable no-unused-vars */
-import React from 'react'
-
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+//import '../styles/Detail.css'; // Asegúrate de importar el archivo CSS
 
 const Detail = () => {
-  console.log("detalles");
+  const { id } = useParams();
+  const [dentistData, setDentistData] = useState(null);
 
-  // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .then(response => response.json())
+      .then(data => setDentistData(data))
+      .catch(error => console.error('Error:', error));
+  }, [id]);
+
+  if (!dentistData) {
+    return <div>Cargando...</div>;
+  }
+
+  const { name, email, phone, website } = dentistData;
 
   return (
-    <>
-      <h1>Detail Dentist id </h1>
-      {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
-      {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
-    </>
-  )
-}
+    <div className="detail-container">
+      <h1>Detail dentist {id}</h1>
+      <table>
+        <tbody>
+          <tr>
+            <td>Nombre</td>
+            <td>{name}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{email}</td>
+          </tr>
+          <tr>
+            <td>Teléfono</td>
+            <td>{phone}</td>
+          </tr>
+          <tr>
+            <td>Sitio Web</td>
+            <td>{website}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
-export default Detail
+export default Detail;

@@ -17,10 +17,12 @@ code {
   border: none;
   width: 100%;
   cursor: pointer;
-}
+} 
 
 h1{
   text-align: center;
+  margin-top: 60px; /* Ajusta la cantidad de margen según sea necesario */
+
 }
 
 nav{

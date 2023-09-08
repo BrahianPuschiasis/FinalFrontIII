@@ -2,20 +2,23 @@
 import React, { useContext } from 'react';
 import { ContextGlobal } from './utils/global.context.jsx';
 import Card from './Card';
+import { Link } from 'react-router-dom'; // Agrega la importación de Link
 import '../styles/CardList.css'; // Asegúrate de importar el archivo CSS
-
 
 const CardList = () => {
   const { state } = useContext(ContextGlobal);
 
   return (
-    <div className="card-list-container"> {/* Aplicamos la clase card-list */}
+    <div className="card-list-container">
       {state.data.map(user => (
         <Card
           key={user.id}
-          name={user.name}
+          name={
+            <Link to={`/dentist/${user.id}`}>
+              {user.name}
+            </Link>
+          }
           username={user.username}
-          id={user.id}
         />
       ))}
     </div>
@@ -23,3 +26,4 @@ const CardList = () => {
 };
 
 export default CardList;
+

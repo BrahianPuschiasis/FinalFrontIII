@@ -10,6 +10,7 @@
   left: 0;
   z-index: 1000;
   color: black; /* Agregado para asegurar que el texto sea oscuro */
+
 }
 
 .navbar.dark-mode {
