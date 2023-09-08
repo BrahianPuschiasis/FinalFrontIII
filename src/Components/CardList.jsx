@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-unused-vars
 import React, { useContext } from "react";
 import { ContextGlobal } from "./utils/global.context.jsx";
 import Card from "./Card";
@@ -12,20 +11,17 @@ const CardList = () => {
   return (
     <div className="card-list-container">
       {state.data.map((user) => (
-        
         <Card
-         key={user.id} 
-     name={user.name}
-
-    
-        id={user.id}
-        username={user.username} />
-
+          key={user.id}
+          link={<Link to={`/dentist/${user.id}`}>Ver</Link>}
+          name={user.name} 
+          id={user.id}
+          username={user.username}
+        />
       ))}
     </div>
   );
 };
-
 
 export default CardList;
 
