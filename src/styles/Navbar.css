@@ -22,10 +22,12 @@
   display: flex;
   margin: 0;
   padding: 0;
+ 
 }
 
 .nav-list li {
   margin-right: 10px;
+
 }
 
 .nav-list li:last-child {
@@ -37,6 +39,7 @@
   color: inherit; /* Hereda el color del texto de su contenedor */
   text-decoration: none;
   font-size: 1.5em;
+
 }
 
 .brand-initial {
@@ -46,8 +49,26 @@
 
 button {
   margin-left: 10px;
+  margin-right: 40px;
 }
 
-.navbar.dark-mode .nav-list li a {
-  color: white;
+
+.button-container {
+  font-size: 1em;
+  border: none;
+  background: black;
+  cursor: pointer;
+  width: 2.5em; /* Puedes ajustar el tamaño según lo necesites */
+  height: 2.0em; /* Puedes ajustar el tamaño según lo necesites */
+  transition: background-color 0.3s; /* Añade una transición al cambio de color de fondo */
+}
+
+.button-container:hover {
+  background: #333; /* Cambia el color de fondo cuando el botón está en hover */
+}
+
+.sun-icon,
+.moon-icon {
+  font-size: 1.4em;
+  color: white; /* Asegura que el icono tenga color blanco */
 }

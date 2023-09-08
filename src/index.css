@@ -36,6 +36,7 @@ a{
   margin: 5px;
   cursor: pointer;
 }
+
 a:hover{
   color: rgb(136, 136, 136);
 } 
@@ -113,10 +114,4 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-.dark{
-  background-color: #12121296;
-  color: white;
-}
-.dark > a {
-  color: white;
-}
+

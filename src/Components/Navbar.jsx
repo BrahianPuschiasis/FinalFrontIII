@@ -34,9 +34,20 @@ const Navbar = () => {
         </li>
       </ul>
 
-      <button onClick={handleClick}>
-        {state.theme === "dark" ? "Light" : "Dark"}
-      </button>
+      <button onClick={handleClick} className="button-container">
+  {state.theme === "dark" ? (
+    <span role="img" aria-label="sol" className="sun-icon">
+      ☀️
+    </span>
+  ) : (
+    <span role="img" aria-label="luna" className="moon-icon">
+      🌙
+    </span>
+  )}
+</button>
+
+
+
     </nav>
   );
 };
