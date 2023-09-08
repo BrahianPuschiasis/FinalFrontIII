@@ -20,7 +20,7 @@ const Favs = () => {
 
   return (
     <div>
-      <h1>Dentistas Destacados</h1>
+      <h1>Dentist Favs</h1>
       <div className="card-list-container">
         {favorites.map(dentist => (
           <div className="card" key={dentist.id}>
