@@ -1,20 +1,37 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
-import Card from "../Components/Card";
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+import React, { useState, useEffect } from "react";
+import doctorImage from '/images/doctor.jpg'; // Importa la imagen
 
 const Favs = () => {
-  console.log("favorito");
+  // Inicializamos el estado de favoritos con los datos del localStorage
+  const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
+
+  useEffect(() => {
+    // Actualizamos el localStorage cada vez que se modifica el estado de favoritos
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  const handleAddToFavorites = (id) => {
+    // Filtramos el dentista con el id especificado
+    const updatedFavorites = favorites.filter(favorite => favorite.id !== id);
+    setFavorites(updatedFavorites);
+    alert('Dentista eliminado de favoritos');
+  };
 
   return (
-    <>
-      <h1>Dentists Favs</h1>
-      <div className="card-grid">
-        {/* este componente debe consumir los destacados del localStorage */}
-        {/* Deberan renderizar una Card por cada uno de ellos */}
+    <div>
+      <h1>Dentistas Destacados</h1>
+      <div className="card-list-container">
+        {favorites.map(dentist => (
+          <div className="card" key={dentist.id}>
+            <img src={doctorImage} alt="Doctor" className="doctor-image" />
+            <h3>{dentist.name}</h3>
+            <p>{dentist.username}</p>
+            <button className="favButton" onClick={() => handleAddToFavorites(dentist.id)}>⭐</button>
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 
