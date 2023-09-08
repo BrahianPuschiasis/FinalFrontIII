@@ -17,8 +17,8 @@ function App() {
 
   return (
     <div className={`App ${theme === 'dark' ? 'dark-mode' : ''}`}>
+      <BrowserRouter basename="/">
       <Navbar />
-      <BrowserRouter basename="/FinalFrontIII">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />

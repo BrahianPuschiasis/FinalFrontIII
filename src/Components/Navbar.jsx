@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 
-
-import React, { useContext, useEffect } from 'react';
-import { ContextGlobal } from './utils/global.context.jsx';
-import '../styles/Navbar.css';
+import React, { useContext, useEffect } from "react";
+import { ContextGlobal } from "./utils/global.context.jsx";
+import { Link } from "react-router-dom"; // Importar Link desde react-router-dom
+import "../styles/Navbar.css";
 
 const Navbar = () => {
   const { state, dispatch } = useContext(ContextGlobal);
@@ -14,24 +14,31 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    document.body.classList.toggle('dark-mode', state.theme === 'dark');
+    document.body.classList.toggle("dark-mode", state.theme === "dark");
   }, [state.theme]);
 
   return (
     <nav className={`navbar ${state.theme}`}>
-      <a href="/home" className="brand-link">
+      <Link to="/home" className="brand-link">
         <span className="brand-initial">D</span>H Odonto
-      </a>
+      </Link>
       <ul className="nav-list">
-        <li><a href="/FinalFrontIII/home">Home</a></li>
-        <li><a href="/FinalFrontIII/contact">Contact</a></li>
-        <li><a href="/FinalFrontIII/favs">Favs</a></li>
+        <li>
+          <Link to="/home">Home</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>
+        <li>
+          <Link to="/favs">Favs</Link>
+        </li>
       </ul>
+
       <button onClick={handleClick}>
-        {state.theme === 'dark' ? 'Light' : 'Dark'} 
+        {state.theme === "dark" ? "Light" : "Dark"}
       </button>
     </nav>
   );
-}
+};
 
 export default Navbar;
