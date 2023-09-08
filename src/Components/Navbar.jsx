@@ -23,9 +23,9 @@ const Navbar = () => {
         <span className="brand-initial">D</span>H Odonto
       </a>
       <ul className="nav-list">
-        <li><a href="/home">Home</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/favs">Favs</a></li>
+        <li><a href="/FinalFrontIII/home">Home</a></li>
+        <li><a href="/FinalFrontIII/contact">Contact</a></li>
+        <li><a href="/FinalFrontIII/favs">Favs</a></li>
       </ul>
       <button onClick={handleClick}>
         {state.theme === 'dark' ? 'Light' : 'Dark'} 

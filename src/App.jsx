@@ -18,12 +18,12 @@ function App() {
   return (
     <div className={`App ${theme === 'dark' ? 'dark-mode' : ''}`}>
       <Navbar />
-      <BrowserRouter>
+      <BrowserRouter basename="/FinalFrontIII">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="home" element={<Home />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="favs" element={<Favs />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/favs" element={<Favs />} />
         </Routes>
       </BrowserRouter>
       <Footer />
