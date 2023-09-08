@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-//import '../styles/Detail.css'; // Asegúrate de importar el archivo CSS
+//import '../styles/Detail.css'; 
 
 const Detail = () => {
   const { id } = useParams();

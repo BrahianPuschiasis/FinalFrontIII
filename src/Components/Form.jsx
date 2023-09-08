@@ -15,6 +15,7 @@ const Form = () => {
     // Validación de nombre completo y email
     if (fullName.trim() === "" || fullName.length < 5 || !email.includes("@")) {
       setMessage("Por favor verifique su información nuevamente.");
+      setSubmitted(false); // Asegura que no se muestre el mensaje de éxito si hay un error
       return;
     }
 
@@ -46,7 +47,11 @@ const Form = () => {
         </div>
         <button type="submit">Enviar</button>
       </form>
-      {message && <p className="response-message">{message}</p>}
+      {message && (
+        <p className={`response-message ${submitted ? "success" : "error"}`}>
+          {message}
+        </p>
+      )}
     </div>
   );
 };

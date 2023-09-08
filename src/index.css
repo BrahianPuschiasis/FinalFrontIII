@@ -17,7 +17,15 @@ code {
   border: none;
   width: 100%;
   cursor: pointer;
-} 
+  transition: background-color 0.3s;
+  margin-left: 39px; /* Agrega un poco de margen izquierdo */
+  }
+
+
+.favButton:hover {
+  background-color: #007bff; /* Cambia el color de fondo en hover */
+}
+
 
 h1{
   text-align: center;
@@ -25,6 +33,10 @@ h1{
 
 }
 
+h2{
+  margin-top: 60px; /* Ajusta la cantidad de margen según sea necesario */
+
+}
 nav{
   display: flex;
   width: 80vw;
