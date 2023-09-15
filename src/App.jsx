@@ -21,18 +21,20 @@ function App() {
   const { theme } = state;
 
   return (
-    <div className={`App ${theme === 'dark' ? 'dark-mode' : ''}`}>
+    <div className={`app ${theme === 'dark' ? 'dark-mode' : ''}`}>
       <BrowserRouter basename="/">
-      <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/favs" element={<Favs />} />
-          <Route path="/dentist/:id" element={<Detail />} />
-        </Routes>
+        <Navbar />
+        <main> {/* Agregamos el elemento main */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/favs" element={<Favs />} />
+            <Route path="/dentist/:id" element={<Detail />} />
+          </Routes>
+        </main>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </div>
   );
 }
