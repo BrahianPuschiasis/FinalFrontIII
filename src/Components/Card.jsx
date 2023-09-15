@@ -29,8 +29,7 @@ const Card = ({ id, name, username,link }) => {
   return (
     <div className="card">
       <img src={doctorImage} alt="Doctor" className="doctor-image" />
-      {link} {/* Renderizas el enlace */}
-      <h3>{name}</h3>
+      <h3>{link}</h3>
       <p>{username}</p>
       <button className="favButton" onClick={handleAddToFavorites}>⭐</button>
     </div>

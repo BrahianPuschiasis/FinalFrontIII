@@ -13,7 +13,7 @@ const CardList = () => {
       {state.data.map((user) => (
         <Card
           key={user.id}
-          link={<Link to={`/dentist/${user.id}`}>Ver</Link>}
+          link={<Link to={`/dentist/${user.id}`}>{user.name}</Link> }
           name={user.name} 
           id={user.id}
           username={user.username}
