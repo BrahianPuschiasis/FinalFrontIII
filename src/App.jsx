@@ -23,11 +23,9 @@ function App() {
     <div className={`app ${theme === 'dark' ? 'dark-mode' : ''}`}>
       <BrowserRouter basename="/">
         <Navbar />
-        <Home />
         <main> {/* Agregamos el elemento main */}
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/FinalFrontIII" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/favs" element={<Favs />} />
             <Route path="/dentist/:id" element={<Detail />} />

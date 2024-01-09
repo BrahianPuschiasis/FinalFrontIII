@@ -19,12 +19,12 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${state.theme}`}>
-      <Link to="/home" className="brand-link">
+      <Link to="/FinalFrontIII" className="brand-link">
         <span className="brand-initial">D</span>H Odonto
       </Link>
       <ul className="nav-list">
         <li>
-          <Link to="/home">Home</Link>
+          <Link to="/FinalFrontIII">Home</Link>
         </li>
         <li>
           <Link to="/contact">Contact</Link>
