@@ -15,7 +15,6 @@ import Favs from "./Routes/Favs.jsx";
 import Detail from "./Routes/Detail.jsx";
 
 
-
 function App() {
   const { state } = useContext(ContextGlobal);
   const { theme } = state;
@@ -24,6 +23,7 @@ function App() {
     <div className={`app ${theme === 'dark' ? 'dark-mode' : ''}`}>
       <BrowserRouter basename="/">
         <Navbar />
+        <Home />
         <main> {/* Agregamos el elemento main */}
           <Routes>
             <Route path="/" element={<Home />} />
